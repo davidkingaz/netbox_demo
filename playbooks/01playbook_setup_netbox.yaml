@@ -1,0 +1,24 @@
+---
+- name: "SETUP INITIAL CONFIGURATION OF NETBOX"
+  hosts: netbox
+  gather_facts: false
+  connection: local
+
+  roles:
+    - netbox_create_token
+    - netbox_setup_sites
+    - netbox_setup_racks
+    - netbox_setup_manufacturers
+    - netbox_setup_device_types
+    - netbox_setup_platforms
+    - netbox_setup_device_roles
+    # - setup_vlans
+    # - setup_ip_addresses
+    # - setup_aggregates
+    # - setup_prefixes
+    # - setup_circuit_providers
+    # - setup_circuit_types
+    # - setup_local_circuits
+    # - setup_tags
+    - netbox_setup_wwt_custom_fields
+    - netbox_remove_token

@@ -1,0 +1,21 @@
+---
+collections:
+  - name: netbox.netbox
+    version: 3.14.0
+  - name: arista.eos
+  - name: cisco.ios
+  # - name: network.base
+  #   src: https://your.private.automation.hub.url  # Replace with your private hub's URL
+  # - name: network.interfaces
+  #   src: https://your.private.automation.hub.url  # Replace with your private hub's URL
+  # - name: netbox.netbox
+  #   version: 1.0.0
+  # - name: pynetbox
+  # - name: network.base
+  # - name: network.interfaces
+  # - name: arista.eos
+  # - name: cisco.ios
+  # - name: ansible.scm
+  # - name: ansible.builtin
+  # - name: ansible.base
+  # - name: ansible.interface

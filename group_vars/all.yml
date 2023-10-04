@@ -1,0 +1,197 @@
+---
+# Install State of Source of Truth
+install_state: present
+
+# device variables
+ansible_user: "ansible"
+ansible_password: "ansible"
+
+sites:
+  - name: "NYC"
+    time_zone: America/New_York
+    status: Active
+    description: NewYork Production Site
+  - name: "CHI"
+    time_zone: America/Chicago
+    status: Active
+    description: Chicago Production Site
+  - name: "RTP"
+    time_zone: America/New_York
+    status: Active
+    description: RTP Production Site
+manufacturers:  # In alphabetical order
+  - Arista
+  - Cisco
+  - Juniper
+racks:
+  - name: "CHI_01"
+    site: "CHI"
+netbox_tags:
+  - name: "Access"
+    slug: "access"
+    color: "00FF00"
+device_types:
+  - model: "ASAv"
+    manufacturer: "Cisco"
+    slug: "asav"
+    part_number: "asav"
+    is_full_depth: false
+  - model: "CSR1000v"
+    manufacturer: "Cisco"
+    slug: "csr1000v"
+    part_number: "csr1000v"
+    is_full_depth: false
+  - model: "vSRX"
+    manufacturer: "Juniper"
+    slug: "vsrx"
+    part_number: "vsrx"
+    is_full_depth: false
+  - model: "IOSv"
+    manufacturer: "Cisco"
+    slug: "iosv"
+    part_number: "iosv"
+    is_full_depth: false
+  - model: "vEOS-Lab"
+    manufacturer: "Arista"
+    slug: "veos-lab"
+    part_number: "veos-lab"
+    is_full_depth: false
+
+platforms:
+  - name: "ASA"
+    slug: "asa"
+  - name: "EOS"
+    slug: "eos"
+  - name: "IOS"
+    slug: "ios"
+  - name: "JUNOS"
+    slug: "junos"
+device_roles:
+  - name: "Firewall"
+    slug: "firewall"
+    color: "FF0000"
+    vm_role: "true"
+  - name: "Router"
+    slug: "router"
+    color: "000080"
+    vm_role: "false"
+  - name: "Switch"
+    slug: "switch"
+    color: "008000"
+    vm_role: "true"
+rirs:
+  - name: RFC1918
+    is_private: true
+aggregates:
+  - name: "10.0.0.0/8"
+    description: "RFC1918 - 10"
+    rir: RFC1918
+  - name: "172.16.0.0/12"
+    description: "RFC1918 - 172"
+    rir: RFC1918
+  - name: "192.168.0.0/16"
+    description: "RFC1918 - 192"
+    rir: RFC1918
+prefixes:
+  - prefix: "192.168.0.0/24"
+    description: "Home network"
+    ispool: true
+  - prefix: "172.18.0.0/24"
+    description: "Lab network"
+    site: "Lab"
+    ispool: false
+  - prefix: "172.19.0.0/24"
+    description: "Lab network Loopbacks"
+    site: "Lab"
+    ispool: false
+circuit_providers:
+  - name: Charter Spectrum
+    asn: 7843
+    account: in_good_standing
+    portal_url: http://spectrum.net
+    noc_contact: noc@spectrum.net
+    comments: "Cable Provider"
+circuit_types:
+  - name: Cable
+circuits:
+  - cid: my-circuit-id
+    provider: Charter Spectrum
+    circuit_type: Cable
+    status: Active
+    install_date: "2016-06-01"
+    commit_rate: 200000000
+    description: Charter Spectrum Cable Internet
+    comments: "Delivered"
+custom_fields:
+  - name: "WWT_Device_ID"
+    label: "WWT Device ID"
+    description: "WWT uses for device identification"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "WWT"
+  - name: "EOL_date"
+    label: "End-of-Life Date"
+    description: "This is the date at which the device not longer receives support"
+    type: "date"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "Device Lifecycle"
+  - name: "EOS_date"
+    label: "End-of-Sale Date"
+    description: "This is the date at which the device not longer able to be purchased"
+    type: "date"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "Device Lifecycle"
+  - name: "WWT_Purchase_Order"
+    label: "Purchase Order #"
+    description: "This is the purchase order# from WWT"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "WWT"
+  - name: "Device_Cost"
+    label: "Cost of Device"
+    description: "This is the cost of the device at purchase"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "Device Details"
+  - name: "Install_Date"
+    label: "WWT Install Date"
+    description: "This is the date at which WWT installed the device"
+    type: "date"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "Device Lifecycle"
+  - name: "Replace_Date"
+    label: "Planned Fiscal Quarter Replacement Date"
+    description: "Targeted FQ for device replacement"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "Device Lifecycle"
+  - name: "sw_ver"
+    label: "Software Version"
+    description: "This is the software version running on the device"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "Device Details"
+  - name: "compliance"
+    label: "Latest Ansible Compliance Check"
+    description: "Most recent date of compliance verification by Ansible"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-write
+    group_name: "Device Details"
+
+# NETBOX VARIABLES
+netbox_url: http://netbox.kingfamilyaz.com
+netbox_user: adminuser
+netbox_pwd: netboxadmin
+plugin: netbox.netbox.nb_inventory
+api_endpoint: http://netbox.kingfamilyaz.com
+validate_certs: false
+config_context: false

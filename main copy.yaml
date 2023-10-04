@@ -1,0 +1,14 @@
+---
+- name: Setup the Sites within NETBOX
+  netbox.netbox.netbox_site:
+    netbox_url: http://netbox.kingfamilyaz.com
+    netbox_token: 6fbba8bf9a55581f23ca586ddcacc3fb0fe053f9
+    data: "{{ site }}"
+    state: "{{ install_state }}"
+    validate_certs: false
+  register: site_setup
+  loop: "{{ sites }}"
+  loop_control:
+    loop_var: site
+    label: "{{ site.name }}"
+  tags: [sites, devices]

@@ -1,0 +1,9 @@
+---
+- name: Convert RAWDATA to HOST_VARS directory following argument specs
+  hosts: localhost
+  gather_facts: true
+  connection: local
+
+  # roles:
+    # - github_device_input
+    # - github_create_clean_host_file

@@ -1,0 +1,11 @@
+---
+- name: Gather Facts
+  hosts: AristaSwitch
+  gather_facts: true
+  connection: local
+
+  roles:
+    - device_discovery_arista
+    - task_set_eos_facts
+    - task_get_facts
+    - github_device_output

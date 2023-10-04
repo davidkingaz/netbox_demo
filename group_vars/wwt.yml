@@ -1,0 +1,51 @@
+---
+custom_fields:
+  - name: "WWT_Device_ID"
+    label: "WWT Device ID"
+    description: "WWT uses for device identification"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-only
+    group_name: "WWT"
+  - name: "EOL_date"
+    label: "End-of-Life Date"
+    description: "This is the date at which the device not longer receives support"
+    type: "date"
+    content_type: dcim.device
+    ui_visibility: read-only
+    group_name: "Device Lifecycle"
+  - name: "EOS_date"
+    label: "End-of-Sale Date"
+    description: "This is the date at which the device not longer able to be purchased"
+    type: "date"
+    content_type: dcim.device
+    ui_visibility: read-only
+    group_name: "Device Lifecycle"
+  - name: "WWT_Purchase_Order"
+    label: "Purchase Order #"
+    description: "This is the purchase order# from WWT"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-only
+    group_name: "WWT"
+  - name: "Device_Cost"
+    label: "Cost of Device at Purchase"
+    description: "This is the cost of the device at purchase"
+    type: "integer"
+    content_type: dcim.device
+    ui_visibility: read-only
+    group_name: "Client Internal"
+  - name: "Install_Date"
+    label: "WWT Install Date"
+    description: "This is the date at which WWT installed the device"
+    type: "date"
+    content_type: dcim.device
+    ui_visibility: read-only
+    group_name: "Device Lifecycle"
+  - name: "Replace_Date"
+    label: "Planned Fiscal Quarter Replacement Date"
+    description: "Targeted FQ for device replacement"
+    type: "text"
+    content_type: dcim.device
+    ui_visibility: read-only
+    group_name: "Device Lifecycle"

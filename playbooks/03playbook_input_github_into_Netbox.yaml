@@ -1,0 +1,13 @@
+---
+- name: Gather Facts
+  hosts: AristaSwitch
+  gather_facts: true
+  connection: local
+
+  roles:
+    - github_device_input
+    - task_set_facts_from_github
+    - netbox_create_token
+    - netbox_basic_add_device
+    - netbox_basic_add_interfaces
+    - netbox_remove_token

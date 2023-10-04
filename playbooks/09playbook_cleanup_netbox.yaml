@@ -1,0 +1,19 @@
+---
+- name: Clean up Netbox to original state
+  hosts: netbox
+  gather_facts: false
+  connection: local
+  vars:
+    install_state: absent
+
+  roles:
+    - netbox_create_token
+    - netbox_delete_interfaces_devices
+    - netbox_setup_wwt_custom_fields
+    - netbox_setup_device_roles
+    - netbox_setup_platforms
+    - netbox_setup_device_types
+    - netbox_setup_manufacturers
+    - netbox_setup_racks
+    - netbox_setup_sites
+    - netbox_remove_token
